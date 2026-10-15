@@ -1,0 +1,24 @@
+{
+  "name": "markdown-plus",
+  "version": "0.4.0",
+  "description": "Respuestas de Claude con negritas en paleta cálida y cabeceras plegables con estilo por nivel",
+  "userConfig": {
+    "palette": {
+      "type": "string",
+      "title": "Paleta de las negritas",
+      "description": "calida: rota entre terracota, miel, canela y coral; unica: usa siempre el color de abajo",
+      "options": [
+        "calida",
+        "unica"
+      ],
+      "default": "calida"
+    },
+    "color": {
+      "type": "string",
+      "title": "Color único de las negritas",
+      "description": "Con la paleta 'unica': clave del tema, nombre o hex (#E07A5F)",
+      "default": "#E07A5F"
+    }
+  },
+  "types": "./types/index.d.ts"
+}
