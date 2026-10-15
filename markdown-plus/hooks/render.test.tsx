@@ -1,6 +1,6 @@
 import { expect, test } from 'claude-code/testing'
 
-const TEXT = 'Intro **negrita**\n\n## Sección\nCuerpo **uno**\n\n### Sub\nDentro'
+const TEXT = 'Intro **bold**\n\n## Section\nBody **one**\n\n### Sub\nInside'
 
 test('pressing a heading folds its section and subsections', async $ => {
   for (const surface of ['terminal', 'desktop', 'mobile', 'vscode'] as const) {
@@ -25,10 +25,10 @@ test('each heading level is drawn in its own style', async $ => {
       plugin: 'markdown-plus',
       surface,
       component: 'AssistantMessage',
-      props: { text: '# Grande\nA\n\n## Mediana\nB\n\n### Pequeña\nC', isFirstOfReply: false },
+      props: { text: '# Large\nA\n\n## Medium\nB\n\n### Small\nC', isFirstOfReply: false },
     })
-    expect(await ui.find({ type: 'Text', text: 'GRANDE' })).toBeDefined()
-    expect(await ui.find({ type: 'Text', text: 'Mediana' })).toBeDefined()
+    expect(await ui.find({ type: 'Text', text: 'LARGE' })).toBeDefined()
+    expect(await ui.find({ type: 'Text', text: 'Medium' })).toBeDefined()
     expect(await ui.find({ type: 'Text', text: /^━+$/ })).toBeDefined()
     await ui.unmount()
   }

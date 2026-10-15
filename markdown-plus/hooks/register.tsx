@@ -16,7 +16,7 @@ async function isSwitchedOff($: EngineInterface) {
   return Array.isArray(off) && off.includes('markdown-plus')
 }
 
-// Terracota, miel, canela, coral: tonos medios que se leen en fondo claro y oscuro.
+// Terracotta, honey, cinnamon, coral: mid tones that read on light and dark backgrounds.
 const WARM = ['#E07A5F', '#E9A23B', '#C8875E', '#D96C75']
 
 // How each heading level reads: the terminal has one font size, so size is
@@ -45,7 +45,7 @@ const HAS_HEADING = /^#{1,6}\s/m
 
 export const register: Register = (on, options) => {
   const single = typeof options.color === 'string' && options.color ? options.color : WARM[0]
-  const palette = options.palette === 'unica' ? [single] : WARM
+  const palette = options.palette === 'single' ? [single] : WARM
 
   on('ui.render', { component: 'AssistantMessage' }, async ($, e, next) => {
     if (await isSwitchedOff($)) return next(e)

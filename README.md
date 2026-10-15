@@ -1,9 +1,9 @@
 # my-claude-mods
 
-Mis mods personales para Claude Code, hechos con *function hooks* (acceso anticipado).
+My personal Claude Code mods, built on function hooks (early access).
 
-| Mod | Qué hace |
+| Mod | What it does |
 |---|---|
-| [markdown-plus](markdown-plus/) | Negritas en color y cabeceras plegables con un estilo por nivel. |
+| [markdown-plus](markdown-plus/) | Colored bold text and foldable headings styled by level. |
 
-Cada mod tiene su propio README con la instalación y la configuración.
+Each mod has its own README with installation and configuration.

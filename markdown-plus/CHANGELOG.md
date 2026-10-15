@@ -1,28 +1,37 @@
 # Changelog
 
-Todos los cambios importantes de markdown-plus se anotan aquí.
-El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y
-las versiones siguen [Semantic Versioning](https://semver.org/lang/es/).
+All notable changes to markdown-plus are recorded here.
+The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
+versions follow [Semantic Versioning](https://semver.org/).
 
-## [Sin publicar]
+## [Unreleased]
+
+## [0.5.0] - 2026-10-15
+
+### Changed
+
+- Everything is now in English: settings, docs, code comments and tests.
+- **Breaking:** the `palette` values are renamed from `calida` / `unica` to
+  `warm` / `single`. If you had set `unica`, set `single` again.
 
 ## [0.4.0] - 2026-10-15
 
-Primera versión publicada.
+First published version.
 
-### Añadido
+### Added
 
-- Negritas en color con la paleta cálida (terracota, miel, canela y coral) o con
-  un único color configurable (`palette` y `color`).
-- Cabeceras plegables con un botón `▾` / `▸`. Plegar una cabecera oculta también
-  sus subsecciones, y el estado se guarda por mensaje.
-- Un estilo distinto para cada nivel de cabecera (mayúsculas, subrayado, cursiva y
-  línea inferior) y sangría según la profundidad.
-- Listas con viñetas y numeradas dentro de la prosa con negritas, con las líneas
-  largas alineadas bajo el texto y los elementos bajo un párrafo sangrados un nivel.
-- Soporte de `mod-switch`: el mod se aparta cuando está en `mod-switch.disabled`.
-- Tests de análisis (`parse.test.ts`) y de dibujo en terminal, escritorio, móvil
-  y VS Code (`render.test.tsx`).
+- Colored bold text with the warm palette (terracotta, honey, cinnamon and coral)
+  or a single configurable color (`palette` and `color`).
+- Foldable headings with a `▾` / `▸` button. Folding a heading also hides its
+  subsections, and the state is kept per message.
+- A distinct style for each heading level (case, underline, italics and a rule
+  beneath) and indentation by depth.
+- Bulleted and numbered lists inside bold prose, with wrapped lines aligned under
+  the text and items under a paragraph indented one level.
+- `mod-switch` support: the mod steps aside while it is in `mod-switch.disabled`.
+- Parsing tests (`parse.test.ts`) and rendering tests for terminal, desktop,
+  mobile and VS Code (`render.test.tsx`).
 
-[Sin publicar]: https://github.com/aseth0/my-claude-mods/compare/markdown-plus-v0.4.0...HEAD
+[Unreleased]: https://github.com/aseth0/my-claude-mods/compare/markdown-plus-v0.5.0...HEAD
+[0.5.0]: https://github.com/aseth0/my-claude-mods/compare/markdown-plus-v0.4.0...markdown-plus-v0.5.0
 [0.4.0]: https://github.com/aseth0/my-claude-mods/releases/tag/markdown-plus-v0.4.0

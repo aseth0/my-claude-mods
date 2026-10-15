@@ -1,22 +1,22 @@
 {
   "name": "markdown-plus",
-  "version": "0.4.0",
-  "description": "Respuestas de Claude con negritas en paleta cálida y cabeceras plegables con estilo por nivel",
+  "version": "0.5.0",
+  "description": "Claude's replies with bold text in a warm palette and foldable headings styled by level",
   "userConfig": {
     "palette": {
       "type": "string",
-      "title": "Paleta de las negritas",
-      "description": "calida: rota entre terracota, miel, canela y coral; unica: usa siempre el color de abajo",
+      "title": "Bold text palette",
+      "description": "warm: cycles through terracotta, honey, cinnamon and coral; single: always uses the color below",
       "options": [
-        "calida",
-        "unica"
+        "warm",
+        "single"
       ],
-      "default": "calida"
+      "default": "warm"
     },
     "color": {
       "type": "string",
-      "title": "Color único de las negritas",
-      "description": "Con la paleta 'unica': clave del tema, nombre o hex (#E07A5F)",
+      "title": "Single bold color",
+      "description": "With the 'single' palette: a theme key, color name or hex (#E07A5F)",
       "default": "#E07A5F"
     }
   },

@@ -1,94 +1,94 @@
 # markdown-plus
 
-Un mod de Claude Code que cambia cómo se dibujan las respuestas de Claude:
+A Claude Code mod that changes how Claude's replies are drawn:
 
-- **Negritas en color.** Cada negrita toma el siguiente color de una paleta cálida
-  (terracota, miel, canela y coral), pensada para leerse en fondo claro y oscuro.
-  También puedes fijar un único color.
-- **Cabeceras plegables.** Cada cabecera lleva un botón `▾` / `▸` que pliega su
-  sección y todas sus subsecciones. El estado se guarda por mensaje.
-- **Un estilo por nivel.** El terminal solo tiene un tamaño de letra, así que cada
-  nivel se distingue por color, mayúsculas, subrayado, cursiva y una línea debajo:
+- **Colored bold text.** Each bold span takes the next color of a warm palette
+  (terracotta, honey, cinnamon and coral), chosen to read on both light and dark
+  backgrounds. You can also pin a single color.
+- **Foldable headings.** Each heading gets a `▾` / `▸` button that folds its
+  section and all its subsections. The folded state is kept per message.
+- **A style per level.** The terminal has a single font size, so each level is
+  told apart by color, case, underline, italics and a rule beneath:
 
-  | Nivel | Estilo |
+  | Level | Style |
   |---|---|
-  | `#` | MAYÚSCULAS, terracota, línea `━` |
-  | `##` | miel, línea `─` |
-  | `###` | canela, subrayado |
+  | `#` | UPPERCASE, terracotta, `━` rule |
+  | `##` | honey, `─` rule |
+  | `###` | cinnamon, underlined |
   | `####` | coral |
-  | `#####` | canela, cursiva |
-  | `######` | canela, cursiva y atenuado |
+  | `#####` | cinnamon, italic |
+  | `######` | cinnamon, italic and dimmed |
 
-  Los subniveles se sangran a partir del nivel más alto de la respuesta.
+  Sub-levels are indented from the reply's top heading level.
 
-Los bloques de código, las tablas, las citas y el resto del Markdown se siguen
-dibujando con el renderizador normal de Claude Code. Las respuestas sin negritas
-ni cabeceras no se tocan.
+Code blocks, tables, quotes and the rest of the Markdown are still drawn by
+Claude Code's own renderer. Replies with no bold text and no headings are left
+untouched.
 
-Funciona en el terminal, en la app de escritorio, en VS Code y en el móvil.
+Works in the terminal, the desktop app, VS Code and on mobile.
 
-## Requisitos
+## Requirements
 
-- Claude Code **2.1.286 o posterior**.
-- Los *function hooks* activados. Son una función en acceso anticipado (*early
-  access*), así que la API puede cambiar sin aviso entre versiones.
+- Claude Code **2.1.286 or later**.
+- Function hooks enabled. They are an early-access feature, so the API may
+  change between releases without notice.
 
-## Instalación
+## Installation
 
-1. Clona el repositorio:
+1. Clone the repository:
 
    ```bash
    git clone https://github.com/aseth0/my-claude-mods.git ~/my-claude-mods
    ```
 
-2. Añade la carpeta del mod a `~/.claude/settings.json` y activa los function hooks:
+2. Add the mod's folder to `~/.claude/settings.json` and enable function hooks:
 
    ```json
    {
      "env": {
-       "CLAUDE_CODE_PLUGIN_DIRS": "/ruta/a/my-claude-mods/markdown-plus",
+       "CLAUDE_CODE_PLUGIN_DIRS": "/path/to/my-claude-mods/markdown-plus",
        "CLAUDE_CODE_ENABLE_FUNCTION_HOOKS": "1"
      }
    }
    ```
 
-   Si ya cargas otros mods, separa las rutas con `:`.
+   If you already load other mods, separate the paths with `:`.
 
-3. Reinicia Claude Code por completo. `/reload-plugins` no vuelve a leer las
-   variables de entorno.
+3. Fully restart Claude Code. `/reload-plugins` does not re-read environment
+   variables.
 
-> Si `settings.json` tiene un error de sintaxis (por ejemplo, una coma de menos),
-> Claude Code descarta todos los mods sin avisar.
+> If `settings.json` has a syntax error (a missing comma, for example), Claude
+> Code silently drops every mod.
 
-## Configuración
+## Configuration
 
-| Opción | Valores | Por defecto | Qué hace |
+| Option | Values | Default | What it does |
 |---|---|---|---|
-| `palette` | `calida`, `unica` | `calida` | `calida` rota entre los cuatro colores; `unica` usa siempre `color`. |
-| `color` | clave del tema, nombre de color o hex | `#E07A5F` | El color de las negritas con la paleta `unica`. |
+| `palette` | `warm`, `single` | `warm` | `warm` cycles through the four colors; `single` always uses `color`. |
+| `color` | theme key, color name or hex | `#E07A5F` | The bold color with the `single` palette. |
 
-## Compatibilidad con mod-switch
+## mod-switch support
 
-Si tienes cargado un mod `mod-switch` que guarda en su estado
-`mod-switch.disabled` la lista de mods apagados, markdown-plus se aparta cuando
-aparece en esa lista. Sin ese mod, markdown-plus funciona igual.
+If you load a `mod-switch` mod that keeps the list of disabled mods in its
+`mod-switch.disabled` state, markdown-plus steps aside while it is on that list.
+Without that mod, markdown-plus works the same.
 
-## Desarrollo
+## Development
 
 ```bash
 claude plugin validate markdown-plus
 claude plugin test markdown-plus
 ```
 
-Claude Code genera la carpeta `.claude-plugin/types/` (declaraciones TypeScript
-y `tsconfig.json`) la primera vez que carga el mod, así que no está en el
-repositorio. Hasta entonces, tu editor no encontrará los tipos de `claude-code`.
+Claude Code generates the `.claude-plugin/types/` folder (TypeScript
+declarations and `tsconfig.json`) the first time it loads the mod, so it is not
+in the repository. Until then, your editor will not find the `claude-code` types.
 
-- `hooks/parse.ts` parte la respuesta en secciones y bloques, y separa la prosa
-  con negritas del resto del Markdown.
-- `hooks/register.tsx` dibuja las cabeceras, los botones de plegado y las
-  negritas en color.
+- `hooks/parse.ts` splits a reply into sections and blocks, and separates prose
+  with bold text from the rest of the Markdown.
+- `hooks/register.tsx` draws the headings, the fold buttons and the colored
+  bold text.
 
-## Cambios
+## Changes
 
-Consulta [CHANGELOG.md](CHANGELOG.md).
+See [CHANGELOG.md](CHANGELOG.md).
